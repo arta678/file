@@ -1,0 +1,254 @@
+<?php
+$title = "Peta Penyedia Jasa Web";
+// include_once "header.php";
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/datatable-bootstrap.css" rel="stylesheet">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="tengah">
+          <div class="head-depan tengah">
+            <div class="row">
+              <div class="col-md-1">
+                <img class="img-responsive margin-b10" src="img/bengkel.png" width="100" height="100" alt="Logo SMA Karangan" />
+              </div>
+              <div class="col-md-11">
+                <h1 class="judul-head">Sistem Informasi Geografis Bengkel</h1>
+                <p><i class="fa fa-map-marker fa-fw"></i> Sistem Informasi yang memuat data bengkel  pada Wilayah Krobokan Bali</p>
+              </div>
+            </div>
+            <hr class="hr1 margin-b-10" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container margin-b70">
+    <nav class="navbar navbar-default navbar-utama" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Status</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="index.php"><i class="fa fa-home"></i> HALAMAN DEPAN</a></li>
+            <li><a href="data.php"><i class="fa fa-list-ul"></i> DATA BENGKEL</a></li>
+            <li><a href="peta.php"><i class="fa fa-map-marker"></i> PETA PERSEBARAN BENGKEl</a></li>
+            <li><a href="about.php" data-toggle="modal" data-target="#about"><i class="fa fa-user"></i> ABOUT</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </nav>
+<link rel = "stylesheet" href = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
+<script src = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+      <div class="row">
+
+        <div class="col-md-12">
+          <div class="panel panel-info panel-dashboard centered">
+            <div class="panel-heading">
+              <h2 class="panel-title"><strong> - TAMPILAN PETA - </strong></h2>
+            </div>
+            <div class="panel-body">
+              <div id="map" style="width:100%; height:380px;"></div>
+
+
+
+    
+
+<script type="text/javascript">
+         // Creating map options
+         var mapOptions = {
+            center: [-8.6522017, 115.1453638],
+            zoom: 15
+         }
+         // Creating a map object
+         var map = new L.map('map', mapOptions);
+         
+         // Creating a Layer object
+         var layer = new L.TileLayer('http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png');
+         map.addLayer(layer);
+
+         var markerOptions = {
+            title: "LOKASI SAYA",
+            clickable: true,
+            draggable: false
+         }
+         var marker = L.marker([-8.6460976, 115.1618323]);
+         marker.addTo(map);
+         marker.bindPopup('Bengkel Kasih Motor').openPopup();
+
+         var a = L.marker([-8.6515707, 115.1682401]);
+         a.addTo(map);
+         a.bindPopup('Bengkel Sari Merta').openPopup();
+
+         var b = L.marker([-8.6521588, 115.1541186]);
+         b.addTo(map);
+         b.bindPopup('Bengkel Kasih Motor').openPopup();
+
+         var b = L.marker([-8.6562748, 115.1624143]);
+         b.addTo(map);
+         b.bindPopup('Bengkel Kasih Motor').openPopup();
+
+         var marker = L.marker([-8.6574282, 115.147064]);
+         marker.addTo(map);
+         marker.bindPopup('Bengkel Mobil Oka Putra Motor').openPopup();
+
+         var marker = L.marker([-8.6562774, 115.1624143]);
+         marker.addTo(map);
+         marker.bindPopup('Bengkel Bella Motor').openPopup();
+
+         // var marker = L.marker([-8.6660089, 115.1807016]);
+         // marker.addTo(map);
+         // marker.bindPopup('Satria Bali Perkasa').openPopup();
+
+
+
+
+//   function initialize() {
+    
+//     var mapOptions = {   
+//         zoom: 8,
+//         center: new google.maps.LatLng(-7.9812985, 112.6319264), 
+//         disableDefaultUI: true
+//     };
+
+//     var mapElement = document.getElementById('map');
+
+//     var map = new google.maps.Map(mapElement, mapOptions);
+
+//     setMarkers(map, officeLocations);
+
+// }
+
+// function initMap(){
+//  var LatLng = new google.maps.LatLng(-6.21, 106.85),
+//  options = {
+//    center: LatLng,
+//    zoom: 12
+//  },
+//  map = new google.maps.Map(document.getElementById('map'), options);
+// }
+
+// var officeLocations = [
+// <?php
+// $data = file_get_contents('http://localhost/jasaweb/ambildata.php');
+//                 $no=1;
+//                 if(json_decode($data,true)){
+//                   $obj = json_decode($data);
+//                   foreach($obj->results as $item){
+// ?>
+// [<?php echo $item->id_perusahaan ?>,'<?php echo $item->nama_perusahaan ?>','<?php echo $item->alamat ?>', <?php echo $item->longitude ?>, <?php echo $item->latitude ?>],
+// <?php 
+// }
+// } 
+// ?>    
+// ];
+// function setMarkers(map, locations)
+// {
+//     var globalPin = 'img/marker.png';
+
+//     for (var i = 0; i < locations.length; i++) {
+       
+//         var office = locations[i];
+//         var myLatLng = new google.maps.LatLng(office[4], office[3]);
+//         var infowindow = new google.maps.InfoWindow({content: contentString});
+         
+//         var contentString = 
+//             '<div id="content">'+
+//             '<div id="siteNotice">'+
+//             '</div>'+
+//             '<h5 id="firstHeading" class="firstHeading">'+ office[1] + '</h5>'+
+//             '<div id="bodyContent">'+ 
+//             '<a href=detail.php?id='+office[0]+'>Info Detail</a>'+
+//             '</div>'+
+//             '</div>';
+
+//         var marker = new google.maps.Marker({
+//             position: myLatLng,
+//             map: map,
+//             title: office[1],
+//             icon:'img/marker.png'
+//         });
+
+//         google.maps.event.addListener(marker, 'click', getInfoCallback(map, contentString));
+//     }
+// }
+
+// function getInfoCallback(map, content) {
+//     var infowindow = new google.maps.InfoWindow({content: content});
+//     return function() {
+//             infowindow.setContent(content); 
+//             infowindow.open(map, this);
+//         };
+// }
+
+// initialize();
+</script>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+<!-- <?php include_once "footer.php"; ?> -->
+<div class="footer footer1">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-md-offset-4">
+            <img src="img/logo-logo.png" width="72" height="72" />
+            <h4 class="white">Sistem Informasi Geografis Jasa Web</h4>
+          <h3 class="white">Indonesia</h3>
+          <ul class="list-inline">
+            <li><a href="" class="link-footer">Beranda</a></li>
+            <li><a href="" class="link-footer">Petunjuk Penggunaan</a></li>
+            <li><a href="" class="link-footer">Tentang</a></li>
+          </ul>
+          <h5 class="white">Copyright &copy; Sofyan (Juniordev) 2014</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+<div class="modal fade" id="about" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">About</h4>
+      </div>
+      <div class="modal-body">
+        <h4>SISTEM INFORMASI GEOGRAFIS PENYEDIA JASA WEB DI INDONESIA BERBASIS WEBGIS</h4>
+        <p>Program ini dibuat oleh Sofyan (Juniordev) untuk Tugas Praktikum GIS 2014.</p>
+        <p>Diharapkan program ini memberikan manfaat</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-hover-dropdown.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/datatable-bootstrap.js"></script>
+    
+  </body>
+</html>
